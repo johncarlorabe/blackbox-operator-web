@@ -36,3 +36,63 @@
     transform: rotate(360deg);
   }
 }
+
+
+.login {
+  min-height: 100vh;
+  background-color: #F4FDEB;
+}
+.bg-image {
+  background-image: url('https://therichpost.com/wp-content/uploads/2021/02/login-split.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.new-line {
+  white-space: pre-line;
+}
+
+.footer-text{
+  font-family: 'Poppins-Regular',sans-serif;
+}
+
+.main-text{
+  font-family: 'Poppins-Bold',sans-serif;
+  color: black !important;
+}
+
+.secondary-text{
+  color: #79A329 !important;
+  font-size: 1.2rem !important;
+}
+
+.loginField{
+  font-family: 'Poppins-Medium',sans-serif;
+  border-radius: .6rem !important;
+  background-color: #F0F0F0 !important;
+}
+
+.loginLabel{
+  font-family: 'Poppins-SemiBold',sans-serif;
+  font-size: 1.2rem !important;
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+.login-button{
+  font-family: 'Poppins-Medium',sans-serif;
+  border-radius: .6rem !important;
+  background-color: black !important;
+}
+
+.forgot-password-link{
+  color: #79A329 !important;
+  text-decoration: none !important;
+  font-size: 1.1rem !important;
+}
+
+.main-sidebar{
+  height: 100vh !important;
+}
