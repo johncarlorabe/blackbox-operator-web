@@ -37,6 +37,9 @@
   }
 }
 
+.mainPage{
+  background-color: #F4FDEB;
+}
 
 .login {
   min-height: 100vh;

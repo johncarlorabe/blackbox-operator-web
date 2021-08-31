@@ -12,7 +12,7 @@ function Sidebar() {
             <ProSidebar>
                 <SidebarHeader>
                     <Row className="justify-content-center my-5">
-                        <img style={{ height: '150px', width: 'auto' }} src="/img/etisalat-logo.png" fluid />
+                        <img style={{ height: '120px', width: 'auto' }} src="/img/etisalat-logo.png" fluid />
                     </Row>
                 </SidebarHeader>
                 <SidebarContent>
@@ -24,17 +24,17 @@ function Sidebar() {
                             <MenuItem>Global Search</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaUserClock />} title="Pendings">
-                            <MenuItem>Search Account</MenuItem>
-                            <MenuItem>Register Account</MenuItem>
-                            <MenuItem>Global Search</MenuItem>
+                            <MenuItem>Pending Accounts</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaUserAlt />} title="Web Users">
                             <MenuItem>View Web Users</MenuItem>
                             <MenuItem>Register Web User</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaRegFileAlt />} title="Reports">
+                        <MenuItem>Transaction Reports</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaCog />} title="Settings">
+                        <MenuItem>Settings</MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>
