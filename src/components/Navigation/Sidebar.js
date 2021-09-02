@@ -18,23 +18,15 @@ function Sidebar() {
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem>MAIN MENU</MenuItem>
-                        <SubMenu icon={<FaUsers />} title="Subscribers">
-                            <MenuItem>Search Account</MenuItem>
-                            <MenuItem>Register Account</MenuItem>
-                            <MenuItem>Global Search</MenuItem>
-                        </SubMenu>
-                        <SubMenu icon={<FaUserClock />} title="Pendings">
-                            <MenuItem>Pending Accounts</MenuItem>
-                        </SubMenu>
                         <SubMenu icon={<FaUserAlt />} title="Web Users">
-                            <MenuItem>View Web Users</MenuItem>
                             <MenuItem>Register Web User</MenuItem>
+                            <MenuItem>View Web Users</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaRegFileAlt />} title="Reports">
-                        <MenuItem>Transaction Reports</MenuItem>
+                            <MenuItem>Transaction Reports</MenuItem>
                         </SubMenu>
                         <SubMenu icon={<FaCog />} title="Settings">
-                        <MenuItem>Settings</MenuItem>
+                            <MenuItem>User Roles</MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>

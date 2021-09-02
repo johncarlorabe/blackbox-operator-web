@@ -99,3 +99,26 @@
 .main-sidebar{
   height: 100vh !important;
 }
+
+.card-custom{
+  border-radius: .7rem !important;
+  border: none !important;
+}
+
+.bg-main{
+  background-color: #C7D532 !important;
+}
+
+.floating-addon{
+  background-color: white !important;
+  border: none !important;
+
+}
+
+.with-floating-addon{
+  border: none !important;
+}
+
+.navbar-custom{
+  background-color: transparent !important;
+}

@@ -5,8 +5,9 @@ import { FaUserCircle,FaLock,FaSignOutAlt } from "react-icons/fa";
 import SearchBar from "../Forms/SearchBar";
 
 function NavigationBar(props) {
+  console.log(props);
   return (
-    <Navbar className="py-3" collapseOnSelect expand="lg" bg="light" variant="light">
+    <Navbar className="py-3 navbar-custom" collapseOnSelect expand="lg" variant="light">
       <Container className="px-0" fluid>
         <Navbar.Brand href="#home"></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

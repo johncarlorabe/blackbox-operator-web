@@ -7,22 +7,15 @@ function CarouselLogin() {
     return (
         <Carousel controls={false} interval={5000} fade wrap touch indicators={true}>
             <Carousel.Item>
-                <Row className="justify-content-center">
-                    <Col className="align-self-center">
-                        <Image
-                            className="h-60"
-                            src="/img/carousel/img_1.png"
-                            alt="First slide" fluid
-                        />
-                    </Col>
-                </Row>
-                <Row className="justify-content-center">
-                    <Col className="mt-5">
-                        <Carousel.Caption>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin molestie magna ultrices massa efficitur facilisis.</p>
-                        </Carousel.Caption>
-                    </Col>
-                </Row>
+                <Image
+                    className="h-30"
+                    src="/img/carousel/img_1.png"
+                    alt="First slide" fluid
+                />
+                <Carousel.Caption>
+                    <p className="pt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin molestie magna ultrices massa efficitur facilisis.</p>
+                </Carousel.Caption>
+
             </Carousel.Item>
         </Carousel>
     );

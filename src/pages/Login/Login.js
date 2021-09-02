@@ -17,8 +17,8 @@ function Login() {
                 <div className="row no-gutter">
                     <div className="col-md-5 d-none d-md-flex bg-black">
                         <Col className="align-items-center">
-                            <Row className="justify-content-center my-5">
-                                <img style={{ height: '200px', width: 'auto' }} src="/img/etisalat-logo.png" fluid />
+                            <Row className="justify-content-center my-2">
+                                <img style={{ height: '170px', width: 'auto' }} src="/img/etisalat-logo.png" fluid />
                             </Row>
                             <Row className="justify-content-center mt-5">
                                 <CarouselLogin />
