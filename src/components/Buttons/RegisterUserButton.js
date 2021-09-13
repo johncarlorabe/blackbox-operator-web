@@ -1,22 +1,20 @@
 import React, { useState,useEffect } from "react";
 import { Button, Spinner } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
-function userLoginRequest() {
+function registerUserRequest() {
     //REPLACE WITH API CALLING
     return new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   
-function LoginButton(props) {
+function RegisterUserButton(props) {
+    console.log("props");
     console.log(props);
-    const history = useHistory();
     const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
         if (isLoading) {
-            userLoginRequest().then(() => {
-            history.push("/home");
+            registerUserRequest().then(() => {
             setLoading(false);
           });
         }
@@ -25,7 +23,7 @@ function LoginButton(props) {
     const handleClick = () => setLoading(true);
 
     return (
-        <Button onClick={() => handleClick()} className="login-button px-4 mt-5" type="submit" variant="dark" size="lg" disabled={isLoading}>
+        <Button onClick={() => handleClick()} type="submit" variant="dark" disabled={isLoading}>
             <Spinner
                 as="span"
                 animation="border"
@@ -34,9 +32,9 @@ function LoginButton(props) {
                 aria-hidden="true"
                 style={isLoading == false ? { display: 'none' } : {}}
             />
-            {isLoading ? ' Logging in..':'Login'}
+            {isLoading ? ' Please wait..':'Submit'}
         </Button>
     );
 }
 
-export default LoginButton;
+export default RegisterUserButton;

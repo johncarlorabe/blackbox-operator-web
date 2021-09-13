@@ -1,52 +1,108 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Sidebar from "../components/Navigation/Sidebar";
-import { Col, Row, Container, Card } from 'react-bootstrap';
+import {
+  ProSidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  Menu,
+  MenuItem,
+  SubMenu,
+} from "react-pro-sidebar";
+import "react-pro-sidebar/dist/css/styles.css";
+import { FiLogOut } from "react-icons/fi";
+import { FaUserAlt, FaRegFileAlt, FaCog } from "react-icons/fa";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
+import { Col, Row, Container } from "react-bootstrap";
 import Home from "./Homepage/Home";
-import Login from "./Login/Login";
-import SearchBar from "../components/Forms/SearchBar";
 import NavigationBar from "../components/Navigation/NavigationBar";
+import RegisterUser from "./WebUser/RegisterUser";
+
+const routes = [
+  {
+    path: "/registeruser",
+    exact: true,
+    main: () => <RegisterUser />,
+  },
+  {
+    path: "/home",
+    main: () => <Home />,
+  },
+];
 
 function Main() {
-    const user = "ADMIN USER";
-    return (
-        <Container fluid className="mainPage">
-            <Row>
-                <Col sm="auto" className="p-0">
-                    <Sidebar />
-                </Col>
-                <Col sm>
-                    <Row>
-                        <NavigationBar />
-                    </Row>
-                    <Row className="px-3 my-4 justify-content-start">
-                        <h7 className="secondary-text text-left">HOMEPAGE</h7>
-                        <h4 className="display-7 main-text text-left mb-0 pt-3">Welcome back, {user}!</h4>
-                        <small className="text-left text-secondary">Last login: August 31, 2021 06:00 PM</small>
-                    </Row>
-                    <Row className="px-3 m-auto d-flex justify-content-around">
-                        <Col>
-                            <Row>
-                                <Card className="card-custom bg-main shadow" style={{ height: '15rem' }}>
-                                    <Card.Body>
-                                        <Card.Title></Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
-                                        <Card.Text>
-                                           
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Row>
-                            
-                        </Col>
-                        <Col xs={8}>
-                            
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-        </Container>
-    );
-}
+    
+  const history = useHistory();
+  const handleClick = () => history.push("/login");
 
+  return (
+    <Container fluid className="mainPage">
+      <Row>
+        <Router>
+          <Col sm="auto" className="p-0">
+            <div className="main-sidebar">
+              <ProSidebar>
+                <SidebarHeader>
+                  <Link to="/home">
+                    <Row className="justify-content-center my-5">
+                      <img
+                        style={{ height: "120px", width: "auto" }}
+                        src="/img/etisalat-logo.png"
+                        fluid
+                      />
+                    </Row>
+                  </Link>
+                </SidebarHeader>
+                <SidebarContent>
+                  <Menu iconShape="circle">
+                    <MenuItem>MAIN MENU</MenuItem>
+                    <SubMenu icon={<FaUserAlt />} title="Web Users">
+                      <MenuItem>
+                        <Link to="/registeruser">Register Web User</Link>
+                      </MenuItem>
+                      <MenuItem>View Web Users</MenuItem>
+                    </SubMenu>
+                    <SubMenu icon={<FaRegFileAlt />} title="Reports">
+                      <MenuItem>Transaction Reports</MenuItem>
+                    </SubMenu>
+                    <SubMenu icon={<FaCog />} title="Settings">
+                      <MenuItem>User Roles</MenuItem>
+                    </SubMenu>
+                  </Menu>
+                </SidebarContent>
+                <SidebarFooter>
+                  <Menu iconShape="circle">
+                    <MenuItem onClick={() => handleClick()} icon={<FiLogOut />}>
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                </SidebarFooter>
+              </ProSidebar>
+            </div>
+          </Col>
+          <Col sm>
+            <Row>
+              <NavigationBar />
+            </Row>
+            <Switch>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  children={<route.main />}
+                />
+              ))}
+            </Switch>
+          </Col>
+        </Router>
+      </Row>
+    </Container>
+  );
+}
 export default Main;

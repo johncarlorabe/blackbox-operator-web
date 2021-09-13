@@ -4,7 +4,29 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import { Row } from 'react-bootstrap';
 import { FiLogOut } from "react-icons/fi";
 import { FaUsers, FaUserClock, FaUserAlt, FaRegFileAlt, FaCog } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+import RegisterUser from "../../pages/WebUser/RegisterUser";
+
+  const routes = [
+    {
+      path: "/registeruser",
+      exact: true,
+      main: () => <RegisterUser/>
+    },
+    {
+      path: "/home",
+      main: () => <h2>Bubblegum</h2>
+    },
+    {
+      path: "/shoelaces",
+      main: () => <h2>Shoelaces</h2>
+    }
+  ];
 
 function Sidebar() {
     return (
@@ -33,7 +55,7 @@ function Sidebar() {
                 <SidebarFooter>
                     <Menu iconShape="circle">
                         <MenuItem icon={<FiLogOut />}>Logout
-                            <Link to="/" />
+                            <Link to="/login" />
                         </MenuItem>
                     </Menu>
                 </SidebarFooter>
