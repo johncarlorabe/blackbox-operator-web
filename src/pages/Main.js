@@ -41,7 +41,7 @@ function Main() {
   const handleClick = () => history.push("/login");
 
   return (
-    <Container fluid className="mainPage">
+    <Container fluid>
       <Row>
         <Router>
           <Col sm="auto" className="p-0">
@@ -51,8 +51,7 @@ function Main() {
                   <Link to="/home">
                     <Row className="justify-content-center my-5">
                       <img
-                        style={{ height: "120px", width: "auto" }}
-                        src="/img/etisalat-logo.png"
+                        className="sidebar-logo"
                         fluid
                       />
                     </Row>

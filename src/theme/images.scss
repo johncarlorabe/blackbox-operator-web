@@ -1,0 +1,20 @@
+@use 'base';
+
+$logo-file:'etisalat-logo.png';
+@mixin setter-image ($source: '',$width:'',$height:'') {
+    content: url('#{base.$image-path}/#{$source}');
+    height: $height;
+    width: $width;
+  }
+
+.login-logo{
+    @include setter-image($source: $logo-file,$width:auto,$height:170px);
+}
+
+.sidebar-logo{
+    @include setter-image($source: $logo-file,$width:auto,$height:120px);
+}
+
+.carousel-img-1{
+    @include setter-image($source: 'carousel/img_1.png');
+}

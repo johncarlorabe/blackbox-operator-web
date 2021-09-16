@@ -1,0 +1,94 @@
+@use 'base';
+
+//bootstrap variables:
+$body-bg: #F4FDEB !default;
+$input-bg: white;
+$font-family-base: base.$font-stack !default;
+$link-color: #79A329;
+$link-hover-color: #8db641;
+$border-radius: .6rem;
+//end
+
+body {
+    font: 100% base.$font-stack;
+}
+
+.main-header{
+    color: base.$primary-color;
+    font-family: base.$header-font;
+}
+
+.sub-header{
+    color: base.$secondary-color;
+    font-size: base.$login-page-text-size;
+}
+
+//login styles
+.login{
+    min-height: 100vh;
+    background-color: $body-bg;
+}
+
+@mixin login-form-style($bg: black){
+    font-family: Poppins-Medium,sans-serif;
+    border-radius: 0.6rem !important;
+    background-color: $bg !important;
+}
+
+.login-button{
+    @include login-form-style($bg: black);
+}
+
+.login-field{
+    @include login-form-style($bg: #F0F0F0);
+}
+
+.login-label{
+    font-family: Poppins-SemiBold,sans-serif;
+    font-size: base.$login-page-text-size;
+}
+
+a.forgot-password-link{
+    text-decoration: none;
+    font-size:base.$login-page-text-size - 0.1;
+}
+//end
+
+//card styles
+@mixin card-custom-style($bg: white){
+    border-radius: 0.7rem !important;
+    border: 0 !important;
+    background-color: $bg !important;
+}
+
+.card-main{
+    @include card-custom-style($bg: base.$accent-color);
+}
+
+.card-white{
+    @include card-custom-style($bg: white);
+}
+
+.card-black{
+    @include card-custom-style($bg: base.$primary-color);
+}
+//end
+
+//form styles
+.floating-addon{
+    background-color: white !important;
+    border: none !important;
+  }
+  
+  .with-floating-addon{
+    border: none !important;
+  }
+  
+//end
+
+//navigation styles
+.navbar-transparent{
+    background-color: transparent !important;
+  }
+//end
+@import "../../node_modules/bootstrap/scss/bootstrap"

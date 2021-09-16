@@ -8,8 +8,7 @@ function CarouselLogin() {
         <Carousel controls={false} interval={5000} fade wrap touch indicators={true}>
             <Carousel.Item>
                 <Image
-                    className="h-30"
-                    src="/img/carousel/img_1.png"
+                    className="h-30 carousel-img-1"
                     alt="First slide" fluid
                 />
                 <Carousel.Caption>

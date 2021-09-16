@@ -6,8 +6,8 @@ function Home() {
   return (
     <div>
       <Row className="px-3 my-4 justify-content-start">
-        <h7 className="secondary-text text-left">HOMEPAGE</h7>
-        <h4 className="display-7 main-text text-left mb-0 pt-3">
+        <h7 className="sub-header text-left">HOMEPAGE</h7>
+        <h4 className="display-7 main-header text-left mb-0 pt-3">
           Welcome back, {user}!
         </h4>
         <small className="text-left text-secondary">
@@ -18,7 +18,7 @@ function Home() {
         <Col>
           <Row>
             <Card
-              className="card-custom bg-main shadow"
+              className="card-main shadow"
               style={{ height: "15rem" }}
             >
               <Card.Body>

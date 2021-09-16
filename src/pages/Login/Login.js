@@ -18,7 +18,7 @@ function Login() {
                     <div className="col-md-5 d-none d-md-flex bg-black">
                         <Col className="align-items-center">
                             <Row className="justify-content-center my-2">
-                                <img style={{ height: '170px', width: 'auto' }} src="/img/etisalat-logo.png" fluid />
+                                <img className="login-logo" fluid />
                             </Row>
                             <Row className="justify-content-center mt-5">
                                 <CarouselLogin />
@@ -31,21 +31,23 @@ function Login() {
                                 <div className="row">
                                     <div className="col-lg-10 col-xl-7 mx-auto px-5 ">
                                         <div className="col justify-items-end">
-                                            <h3 className="display-7 main-text text-left mb-0">Welcome to Etisalat</h3>
-                                            <p className="secondary-text text-left mb-4">Sign in to continue.</p>
+                                            <h3 className="display-7 main-header text-left mb-0">Welcome to Etisalat</h3>
+                                            <p className="sub-header text-left mb-4">Sign in to continue.</p>
                                         </div>
                                         <Form>
                                             <Form.Group className="mb-5 text-left" controlId="loginUsername">
-                                                <Form.Label className="loginLabel">Username</Form.Label>
-                                                <Form.Control className="loginField border-0 shadow-sm" size="lg" type="text" placeholder="" />
+                                                <Form.Label className="login-label">Username</Form.Label>
+                                                <Form.Control className="login-field border-0 shadow-sm" size="lg" type="text" placeholder="" />
                                             </Form.Group>
                                             <Form.Group className="mb-3 text-left" controlId="loginPassword">
-                                                <Form.Label className="loginLabel">Password</Form.Label>
+                                                <Form.Label className="login-label">Password</Form.Label>
                                                 <Link className="float-end forgot-password-link" to="/forgotpassword">Forgot Password?</Link>
                                                 <PasswordField />
                                             </Form.Group>
                                         </Form>
+                                        <div className="text-center">
                                         <LoginButton  {...test} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 function PasswordField(props) {
     console.log(props);
     return (
-        <Form.Control className="loginField border-0 shadow-sm" size="lg" type="password" placeholder="" />
+        <Form.Control className="login-field border-0 shadow-sm" size="lg" type="password" placeholder="" />
     );
 }
 

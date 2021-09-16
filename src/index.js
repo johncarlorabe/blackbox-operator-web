@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import './customSidebar.scss';
-import './customTheme.scss';
+import './theme/sidebar.scss';
+import './theme/custom.scss';
+import './theme/images.scss';
 
 ReactDOM.render(
   <React.StrictMode>
