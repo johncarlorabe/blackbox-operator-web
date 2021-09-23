@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../components/Display/Footer";
 import CarouselLogin from "../../components/Display/CarouselLogin";
-import { Col, Row } from "react-bootstrap";
-import LoginButton from "./components/LoginButton";
-import { withRouter } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
+import { Col, Row, Form } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import ForgotPasswordForm from "./components/ForgotPasswordForm";
+import SubmitButton from "./components/ForgotPasswordButton";
+import CancelButton from "../../components/Buttons/CancelButton";
 
-function Login() {
+function ForgotPassword() {
+  const [formdata, setFormdata] = useState({});
+  const [isValidForm, setIsValidForm] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("form submitted");
+    setFormdata(data);
+    setIsValidForm(true);
+  };
+  const onError = (errors) => {
+    console.log("error");
+    console.log(errors);
+  };
+
+  const submitForm = () => {
+    handleSubmit(onSubmit, onError)();
+  };
   return (
     <div className="maincontainer">
       <div className="container-fluid">
@@ -14,7 +38,7 @@ function Login() {
           <div className="col-md-5 d-none d-md-flex bg-black">
             <Col className="align-items-center">
               <Row className="justify-content-center my-2">
-                <img className="login-logo" fluid="true" />
+                <img className="login-logo" fluid />
               </Row>
               <Row className="justify-content-center mt-5">
                 <CarouselLogin />
@@ -28,13 +52,17 @@ function Login() {
                   <div className="col-lg-10 col-xl-7 mx-auto px-5 ">
                     <div className="col justify-items-end">
                       <h3 className="display-7 main-header text-left mb-0">
-                        Welcome to Etisalat
+                        Forgot Password?
                       </h3>
                       <p className="sub-header text-left mb-4">
-                        Sign in to continue.
+                        Please provide your email address
                       </p>
                     </div>
-                    <LoginForm />
+                    <ForgotPasswordForm />
+                    <div className="text-center">
+                      <CancelButton />
+                      <SubmitButton onClick={submitForm} data={formdata} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -50,4 +78,4 @@ function Login() {
     </div>
   );
 }
-export default withRouter(Login);
+export default withRouter(ForgotPassword);

@@ -24,3 +24,11 @@ $header-font: Poppins-Bold,sans-serif;
 $font-stack: Poppins-Regular,-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;
 $login-page-text-size: 1.2rem;
 //end
+
+//base mixins
+@mixin login-form-style($bg: black){
+  font-family: Poppins-Medium,sans-serif;
+  border-radius: 0.6rem !important;
+  background-color: $bg !important;
+}
+//end

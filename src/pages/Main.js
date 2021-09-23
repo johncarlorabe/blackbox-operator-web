@@ -22,6 +22,7 @@ import { Col, Row, Container } from "react-bootstrap";
 import Home from "./Homepage/Home";
 import NavigationBar from "../components/Navigation/NavigationBar";
 import RegisterUser from "./WebUser/RegisterUser";
+import { logout } from "../utils/LoginUtil";
 
 const routes = [
   {
@@ -38,7 +39,10 @@ const routes = [
 function Main() {
     
   const history = useHistory();
-  const handleClick = () => history.push("/login");
+  const handleClick = () => {
+    history.push("/login");
+    logout(); //change logic when redux is implemented
+  };
 
   return (
     <Container fluid>
@@ -46,7 +50,7 @@ function Main() {
         <Router>
           <Col sm="auto" className="p-0">
             <div className="main-sidebar">
-              <ProSidebar>
+              <ProSidebar breakPoint="md">
                 <SidebarHeader>
                   <Link to="/home">
                     <Row className="justify-content-center my-5">
@@ -58,7 +62,7 @@ function Main() {
                   </Link>
                 </SidebarHeader>
                 <SidebarContent>
-                  <Menu iconShape="circle">
+                  <Menu iconShape="circle" popperArrow={true}>
                     <MenuItem>MAIN MENU</MenuItem>
                     <SubMenu icon={<FaUserAlt />} title="Web Users">
                       <MenuItem>
