@@ -1,36 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "../../components/Display/Footer";
 import CarouselLogin from "../../components/Display/CarouselLogin";
-import { Col, Row, Form } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { Col, Row } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
-import SubmitButton from "./components/ForgotPasswordButton";
-import CancelButton from "../../components/Buttons/CancelButton";
 
 function ForgotPassword() {
-  const [formdata, setFormdata] = useState({});
-  const [isValidForm, setIsValidForm] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log("form submitted");
-    setFormdata(data);
-    setIsValidForm(true);
-  };
-  const onError = (errors) => {
-    console.log("error");
-    console.log(errors);
-  };
-
-  const submitForm = () => {
-    handleSubmit(onSubmit, onError)();
-  };
   return (
     <div className="maincontainer">
       <div className="container-fluid">
@@ -55,14 +30,10 @@ function ForgotPassword() {
                         Forgot Password?
                       </h3>
                       <p className="sub-header text-left mb-4">
-                        Please provide your email address
+                        Provide your email address
                       </p>
                     </div>
                     <ForgotPasswordForm />
-                    <div className="text-center">
-                      <CancelButton />
-                      <SubmitButton onClick={submitForm} data={formdata} />
-                    </div>
                   </div>
                 </div>
               </div>

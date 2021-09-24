@@ -1,117 +1,107 @@
-import React, { useState } from "react";
-import { Row, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import React from "react";
+import { Row, Col } from "react-bootstrap";
+import { useForm, FormProvider } from "react-hook-form";
+import InputField from "../../../components/Forms/InputField";
+import SelectField from "../../../components/Forms/SelectField";
+import { MultiWord, Email, Msisdn } from "../../../utils/DatatypeUtil";
+import RegisterUserButton from "./RegisterUserButton";
+import CancelButton from "../../../components/Buttons/CancelButton";
 
 function RegisterUserForm() {
-  const [formData, setFormData] = useState({});
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log("data", data);
-    setFormData(data);
-  };
-  console.log(errors);
+  const methods = useForm();
+
+  let statusOptions = [
+    {value: 'ACTIVE', name:'Active'},  
+    {value: 'INACTIVE', name:'Inactive'},  
+  ];
+
+  let userslevelOptions = [
+    {value: 'ADMIN', name:'Administrator'},  
+    {value: 'MANAGER', name:'Manager'},  
+  ];
   return (
-    <form id="regiserUserForm" onSubmit={handleSubmit(onSubmit)}>
+    <FormProvider {...methods}>
+      <form>
+        <Row>
+          <div className="col-4 mb-3">
+            <InputField
+              name="FirstName"
+              label="First Name"
+              inputclass="form-control"
+              placeholder="First Name"
+              type="text"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={MultiWord}
+            />
+          </div>
+          <div className="col-4 mb-3">
+            <InputField
+              name="LastName"
+              label="Last Name"
+              inputclass="form-control"
+              placeholder="Last Name"
+              type="text"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={MultiWord}
+            />
+          </div>
+          <div className="col-4 mb-3">
+            <InputField
+              name="EmailAddress"
+              label="Email Address"
+              inputclass="form-control"
+              placeholder="Email Address"
+              type="email"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={Email}
+            />
+          </div>
+          <div className="col-4 mb-3">
+            <InputField
+              name="MobileNumber"
+              label="Mobile Number"
+              inputclass="form-control"
+              placeholder="Mobile Number"
+              type="text"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={Msisdn}
+            />
+          </div>
+          <div className="col-4 mb-3">
+            <SelectField
+              name="Userlevel"
+              label="Userlevel"
+              inputclass="form-control"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={{ required: "Please select Userlevel" }}
+              options={userslevelOptions}
+            />
+          </div>
+          <div className="col-4 mb-3">
+            <SelectField
+              name="Status"
+              label="Status"
+              inputclass="form-control"
+              control={methods.control}
+              errors={methods.formState.errors}
+              rules={{ required: "Please select Status" }}
+              options={statusOptions}
+            />
+          </div>
+        </Row>
+      </form>
       <Row>
-        <Form.Group className="col-4 mb-3" controlId="FirstName">
-          <Form.Label>First Name</Form.Label>
-          <input
-            className={`form-control ${errors.FirstName && "is-invalid"}`}
-            type="text"
-            placeholder="First Name"
-            {...register("FirstName", { required: true, maxLength: 80 })}
-          />
-          {errors.FirstName && (
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid First Name
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Form.Group className="col-4 mb-3" controlId="LastName">
-          <Form.Label>Last Name</Form.Label>
-          <input
-            className={`form-control ${errors.LastName && "is-invalid"}`}
-            type="text"
-            placeholder="Last Name"
-            {...register("LastName", { required: true, maxLength: 80 })}
-          />
-          {errors.LastName && (
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid Last Name
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Form.Group className="col-4 mb-3" controlId="EmailAddress">
-          <Form.Label>Email Address</Form.Label>
-          <input
-            className={`form-control ${errors.EmailAddress && "is-invalid"}`}
-            type="text"
-            placeholder="Email Address"
-            {...register("EmailAddress", {
-              required: true,
-              pattern: /^\S+@\S+$/i,
-            })}
-          />
-          {errors.EmailAddress && (
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid Email Address
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Form.Group className="col-4 mb-3" controlId="MobileNumber">
-          <Form.Label>Mobile Number</Form.Label>
-          <input
-            className={`form-control ${errors.MobileNumber && "is-invalid"}`}
-            type="tel"
-            placeholder="Mobile Number"
-            {...register("MobileNumber", {
-              required: true,
-            })}
-          />
-          {errors.MobileNumber && (
-            <Form.Control.Feedback type="invalid">
-              Please enter a valid Mobile Number
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Form.Group className="col-4 mb-3" controlId="Userlevel">
-          <Form.Label>Userlevel</Form.Label>
-          <select
-            {...register("Userlevel", { required: true })}
-            className={`form-control ${errors.Userlevel && "is-invalid"}`}
-          >
-            <option value="ADMIN">ADMIN</option>
-            <option value="IT">IT</option>
-            <option value="REPORT">REPORT</option>
-            <option value="FINANCE">FINANCE</option>
-          </select>
-          {errors.Userlevel && (
-            <Form.Control.Feedback type="invalid">
-              Please select Userlevel
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
-        <Form.Group className="col-4 mb-3" controlId="Status">
-          <Form.Label>Status</Form.Label>
-          <select
-            {...register("Status", { required: true })}
-            className={`form-control ${errors.Status && "is-invalid"}`}
-          >
-            <option value="ACTIVE">ACTIVE</option>
-            <option value="INACTIVE">INACTIVE</option>
-          </select>
-          {errors.Status && (
-            <Form.Control.Feedback type="invalid">
-              Please select Status
-            </Form.Control.Feedback>
-          )}
-        </Form.Group>
+        <Col className="d-flex justify-content-end" md={{ span: 4, offset: 8 }}>
+          <CancelButton />
+          <RegisterUserButton />
+        </Col>
       </Row>
-    </form>
+    </FormProvider>
   );
 }
 

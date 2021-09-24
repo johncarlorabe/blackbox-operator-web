@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useFormContext } from "react-hook-form";
 
 function apiRequest() {
   //REPLACE WITH API CALLING
@@ -10,24 +11,26 @@ function apiRequest() {
 function ForgotPasswordButton(props) {
   console.log(props);
   const history = useHistory();
-  const [isLoading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({});
+  const isFormValid = Object.keys(formData).length !== 0 ? true : false;
+
+  const { handleSubmit } = useFormContext();
 
   useEffect(() => {
-    if (isLoading) {
+    if (isFormValid) {
       apiRequest().then(() => {
         history.push("/");
-        setLoading(false);
       });
     }
-  }, [isLoading]);
+  }, [isFormValid]);
 
   return (
     <Button
-      onClick={() => setLoading(true)}
+      onClick={handleSubmit((data) => setFormData(data))}
       className="px-4"
       type="submit"
       variant="dark"
-      disabled={isLoading}
+      disabled={isFormValid}
     >
       <Spinner
         as="span"
@@ -35,9 +38,9 @@ function ForgotPasswordButton(props) {
         size="sm"
         role="status"
         aria-hidden="true"
-        style={isLoading == false ? { display: "none" } : {}}
+        style={isFormValid == false ? { display: "none" } : {}}
       />
-      {isLoading ? " Please wait.." : "Submit"}
+      {isFormValid ? " Please wait.." : "Submit"}
     </Button>
   );
 }

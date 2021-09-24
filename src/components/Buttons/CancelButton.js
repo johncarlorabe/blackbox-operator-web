@@ -13,7 +13,7 @@ function CancelButton(props) {
   return (
     <Button
       onClick={() => handeClick()}
-      className="px-4"
+      className="mx-2"
       type="button"
       variant="light"
     >

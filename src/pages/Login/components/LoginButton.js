@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../../utils/LoginUtil";
 import { useFormContext } from "react-hook-form";
 
-function userLoginRequest() {
+function userLoginRequest(data) {
   //REPLACE WITH API CALLING
+  console.log("data",data);
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-function LoginButton({ formdata, submitForm }) {
+function LoginButton(props) {
   const history = useHistory();
   const [formData, setFormData] = useState({});
   const isFormValid = Object.keys(formData).length !== 0 ? true : false;
@@ -19,7 +20,7 @@ function LoginButton({ formdata, submitForm }) {
   useEffect(() => {
     if (isFormValid) {
       login(); //change logic when redux is implemented
-      userLoginRequest().then(() => {
+      userLoginRequest(formData).then(() => {
         history.push("/home");
       });
     }

@@ -1,49 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { withRouter } from "react-router-dom";
+import { useForm, FormProvider } from "react-hook-form";
+import InputField from "../../../components/Forms/InputField";
+import { Email } from "../../../utils/DatatypeUtil";
+import ForgotPasswordButton from "./ForgotPasswordButton";
+import CancelButton from "../../../components/Buttons/CancelButton";
 
 function ForgotPasswordForm() {
-  const [formdata, setFormdata] = useState({});
-  const [isValidForm, setIsValidForm] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log("form submitted");
-    setFormdata(data);
-    setIsValidForm(true);
-  };
-  const onError = (errors) => {
-    console.log("error");
-    console.log(errors);
-  };
-
-  const submitForm = () => {
-    handleSubmit(onSubmit, onError)();
-  };
+  const methods = useForm();
   return (
-    <Form>
-      <Form.Group className="mb-5 text-left" controlId="loginUsername">
-        <Form.Control
-          className={`login-field border-0 shadow-sm ${
-            errors.Email && "is-invalid"
-          }`}
-          size="lg"
-          type="email"
-          {...register("Email", { required: true })}
-        />
-        {errors.Email && (
-          <Form.Control.Feedback type="invalid">
-            Please enter valid Email Address
-          </Form.Control.Feedback>
-        )}
-      </Form.Group>
-    </Form>
+    <FormProvider {...methods}>
+      <Form>
+        <div className="mb-5">
+          <InputField
+            name="Email"
+            size="lg"
+            type="email"
+            label="Email Address"
+            inputclass="border-0 shadow-sm login-field"
+            control={methods.control}
+            errors={methods.formState.errors}
+            rules={Email}
+          />
+        </div>
+      </Form>
+      <div className="text-center">
+        <CancelButton />
+        <ForgotPasswordButton />
+      </div>
+    </FormProvider>
   );
 }
 export default withRouter(ForgotPasswordForm);

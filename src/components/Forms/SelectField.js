@@ -3,22 +3,31 @@ import { Form } from "react-bootstrap";
 import { useController } from "react-hook-form";
 import { checkErrors } from "../../utils/InputFieldUtil";
 
-function InputField(props) {
-  const { type, label, labelclass, inputclass, size, errors, placeholder } = props;
+function SelectField(props) {
+  const { label, labelclass, inputclass, size, errors, options } = props;
   const { field } = useController(props);
   const { errorMessage, hasError } = checkErrors(errors, field.name, label);
 
   return (
-    <Form.Group className="text-left">
+    <Form.Group className="mb-5 text-left">
       <Form.Label className={labelclass}>{label}</Form.Label>
-      <Form.Control
+      <select
         className={`${inputclass} 
         ${hasError && "is-invalid"}`}
         size={size}
-        type={type}
         {...field}
-        placeholder={placeholder}
-      />
+      >
+        <option selected disabled>
+          - Select {label} -
+        </option>
+        {options.map((e, key) => {
+          return (
+            <option key={key} value={e.value}>
+              {e.name}
+            </option>
+          );
+        })}
+      </select>
       {hasError && (
         <Form.Control.Feedback type="invalid">
           {errorMessage}
@@ -27,4 +36,4 @@ function InputField(props) {
     </Form.Group>
   );
 }
-export default InputField;
+export default SelectField;
